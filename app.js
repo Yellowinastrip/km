@@ -251,6 +251,7 @@ function bindNavigation() {
     document.getElementById("emotion-panel").hidden = true;
     document.getElementById("category-grid").hidden = false;
     document.getElementById("mood-title").textContent = `Обери категорію для ${PEOPLE[selectedPerson].name}`;
+    setBackground("mood-categories");
   });
 
   document.getElementById("clear-history").addEventListener("click", async () => {
@@ -278,6 +279,7 @@ function syncSessionUi() {
 function showView(viewName) {
   document.querySelectorAll(".view").forEach((view) => view.classList.remove("is-active"));
   document.getElementById(`${viewName}-view`).classList.add("is-active");
+  setBackground(viewName === "mood" ? "mood-categories" : viewName);
 
   if (viewName === "history") {
     renderHistory(historyCache);
@@ -315,6 +317,7 @@ function openCategory(categoryId) {
   document.getElementById("emotion-panel").hidden = false;
   document.getElementById("emotion-title").textContent = category.title;
   document.getElementById("mood-title").textContent = `Обери настрій для ${PEOPLE[selectedPerson].name}`;
+  setBackground("mood-expanded");
 
   emotionGrid.innerHTML = "";
   category.emotions.forEach(([emoji, mood]) => {
@@ -325,6 +328,19 @@ function openCategory(categoryId) {
     button.addEventListener("click", () => saveMood({ emoji, mood, category }));
     emotionGrid.append(button);
   });
+}
+
+function setBackground(name) {
+  const backgroundClasses = [
+    "bg-auth",
+    "bg-entry",
+    "bg-main",
+    "bg-mood-categories",
+    "bg-mood-expanded",
+    "bg-history",
+  ];
+  document.body.classList.remove(...backgroundClasses);
+  document.body.classList.add(`bg-${name}`);
 }
 
 async function saveMood({ emoji, mood, category }) {
