@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>K + M | Настрій</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="view view-auth is-active" id="auth-view" aria-labelledby="auth-title">
+        <form class="auth-panel" id="auth-form" autocomplete="off">
+          <p class="site-mark" id="auth-title">K + M</p>
+          <p class="auth-hint" id="auth-hint">Підготовка входу...</p>
+          <div class="auth-field" id="auth-email-field" hidden>
+            <label class="auth-label" for="auth-email">Електронна пошта</label>
+            <input
+              class="auth-input"
+              id="auth-email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              aria-describedby="auth-error"
+            />
+          </div>
+          <div class="auth-field">
+            <label class="auth-label" for="auth-password">Пароль</label>
+            <input
+              class="auth-input"
+              id="auth-password"
+              name="password"
+              type="password"
+              inputmode="text"
+              autocomplete="current-password"
+              aria-describedby="auth-error"
+              required
+            />
+          </div>
+          <button class="button button-primary" type="submit">Увійти</button>
+          <p class="auth-error" id="auth-error" role="alert"></p>
+        </form>
+      </section>
+
+      <section class="view view-entry" id="entry-view" aria-labelledby="entry-title">
+        <div class="entry-panel">
+          <p class="site-mark" id="entry-title">K + M</p>
+          <p class="site-subtitle">Сімейний простір Нарусевичів</p>
+          <button class="button button-primary" data-view="main">Настрій</button>
+        </div>
+      </section>
+
+      <section class="view view-main" id="main-view" aria-labelledby="main-title">
+        <div class="top-bar">
+          <button class="ghost-button" data-view="entry" aria-label="На головну">K + M</button>
+          <div class="session-panel" aria-label="Активний користувач">
+            <span id="main-session-name">Катя</span>
+            <button class="ghost-button logout-button" data-logout type="button">Вийти</button>
+          </div>
+        </div>
+
+        <h1 id="main-title">Настрій</h1>
+
+        <div class="main-actions" aria-label="Дії з настроєм">
+          <button class="button" data-view="mood">Додати настрій</button>
+          <button class="button" data-view="history">Історія настрою</button>
+        </div>
+
+        <div class="current-moods" aria-live="polite">
+          <article class="mood-card" data-card="katya">
+            <div class="mood-frame">
+              <span class="mood-emoji" id="katya-emoji">🤔</span>
+              <span class="mood-name" id="katya-mood">Задумливість</span>
+            </div>
+            <div class="mood-meta">
+              <strong>Катя</strong>
+              <time id="katya-date">14.02.26</time>
+              <time id="katya-time">12:39</time>
+            </div>
+          </article>
+
+          <article class="mood-card" data-card="mykyta">
+            <div class="mood-frame">
+              <span class="mood-emoji" id="mykyta-emoji">😎</span>
+              <span class="mood-name" id="mykyta-mood">Впевненість</span>
+            </div>
+            <div class="mood-meta">
+              <strong>Микита</strong>
+              <time id="mykyta-date">14.02.26</time>
+              <time id="mykyta-time">14:20</time>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view view-mood" id="mood-view" aria-labelledby="mood-title">
+        <div class="top-bar">
+          <button class="ghost-button" data-view="main">Назад</button>
+          <div class="session-panel" aria-label="Активний користувач">
+            <span id="mood-session-name">Катя</span>
+            <button class="ghost-button logout-button" data-logout type="button">Вийти</button>
+          </div>
+        </div>
+
+        <h2 id="mood-title">Обери категорію</h2>
+        <div class="category-grid" id="category-grid"></div>
+
+        <div class="emotion-panel" id="emotion-panel" hidden>
+          <div class="emotion-heading">
+            <h3 id="emotion-title">Настрої</h3>
+            <button class="ghost-button" id="reset-category" type="button">Усі категорії</button>
+          </div>
+          <div class="emotion-grid" id="emotion-grid"></div>
+        </div>
+      </section>
+
+      <section class="view view-history" id="history-view" aria-labelledby="history-title">
+        <div class="top-bar">
+          <button class="ghost-button" data-view="main">Назад</button>
+          <button class="ghost-button" id="clear-history" type="button">Оновити демо</button>
+        </div>
+
+        <h2 id="history-title">Історія настрою</h2>
+        <div class="history-layout" id="history-layout" aria-live="polite"></div>
+      </section>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
