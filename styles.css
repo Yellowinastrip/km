@@ -34,7 +34,7 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f2 url("visual/background.jpg") center / cover fixed no-repeat;
+  background: #f4f4f2 url("background.jpg") center / cover fixed no-repeat;
 }
 
 body::before {
