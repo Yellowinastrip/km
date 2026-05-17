@@ -3,3 +3,5 @@ config.local.js
 .env.*
 .vercel
 .DS_Store
+DEPLOYMENT.md
+SUPABASE_SETUP.sql
